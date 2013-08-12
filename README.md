@@ -4,6 +4,8 @@ tiff-capture
 Provides a PIL based capture interface to multi-part tiffs, allowing them to be used more easily with OpenCV. 
 
 Example usage:
+
+```python
     import tiffcapture as tc
     import cv2
     tiff = tc.opentiff(filename) #open img
@@ -16,5 +18,5 @@ Example usage:
         cv2.imshow('video', tempimg)
         cv2.waitKey(80)
     cv2.destroyWindow('video')
-
+```
 
