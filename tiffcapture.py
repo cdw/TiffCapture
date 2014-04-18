@@ -94,4 +94,8 @@ class TiffCapture(object):
         except EOFError:
             img = np.array([])
         return img
-
+    
+    def seek(self, i):
+        """Set a given location in the tiff stack as our current """
+        self._curr = i
+        return
