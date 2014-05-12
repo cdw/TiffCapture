@@ -45,6 +45,17 @@ class TiffCapture(object):
     def __iter__(self):
         return self
 
+    def _count_frames(self):
+        """Return the number of frames in the tiff, takes a bit
+        Honestly, there should be a faster way to do this.
+        """
+        try:
+            self.tiff.seek(10**1000) #gonna assume that's long enough
+        except EOFError:
+            length = self.tiff.tell()
+            self.tiff.seek(0)
+            return length
+
     def open(self, filename):
         """Open a multi-stack tiff for video capturing.
         Open also sets class variables to allow dummy TiffCapture
@@ -70,15 +81,6 @@ class TiffCapture(object):
             return img
         else:
             raise StopIteration()
-    
-    def _count_frames(self):
-        """Return the number of frames in the tiff, takes a bit"""
-        try:
-            self.tiff.seek(10**1000) #gonna assume that's long enough
-        except EOFError:
-            length = self.tiff.tell()
-            self.tiff.seek(0)
-            return length
     
     def grab(self):
         """Move to the next stack image, return True for success"""
