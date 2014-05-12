@@ -36,7 +36,7 @@ def opentiff(filename):
     return TiffCapture(filename)
 
 class TiffCapture(object):
-
+    
     """Feed me a filename, I'll give you a tiff's capture object. 
     It should be noted that some of the method names aren't 
     intuitive, this is not a choice but is to retain compatibility 
@@ -50,7 +50,7 @@ class TiffCapture(object):
     
     def __iter__(self):
         return self
-
+    
     def _count_frames(self):
         """Return the number of frames in the tiff, takes a bit
         Honestly, there should be a faster way to do this.
@@ -61,7 +61,7 @@ class TiffCapture(object):
             length = self.tiff.tell()
             self.tiff.seek(0)
             return length
-
+    
     def open(self, filename):
         """Open a multi-stack tiff for video capturing.
         Open also sets class variables to allow dummy TiffCapture
@@ -126,7 +126,13 @@ class TiffCapture(object):
         """Set a given location in the tiff stack as our current."""
         self._curr = i
         return
-
+    
+    def release(self):
+        """Release the open tiff file."""
+        if self.isOpened() is True:
+            del(self.tiff)
+            self._is_open = False
+    
     def isOpened(self):
         """Returns true if a video capturing is initialized."""
         return self._is_open
