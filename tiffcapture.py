@@ -36,7 +36,13 @@ def opentiff(filename):
     return TiffCapture(filename)
 
 class TiffCapture(object):
-    """Feed me a filename, I'll give you a tiff's capture object"""
+
+    """Feed me a filename, I'll give you a tiff's capture object. 
+    It should be noted that some of the method names aren't 
+    intuitive, this is not a choice but is to retain compatibility 
+    with OpenCV VideoCapture objects.
+    """
+    
     def __init__(self, filename=None):
         """Initialize and return the capture object"""
         self._is_open = False #set true upon opening
@@ -76,6 +82,9 @@ class TiffCapture(object):
         return self.isOpened()
     
     def next(self):
+        """Grab and read next frame, stopping iteration on reaching 
+        the end of the file.
+        """
         f, img = self.read()
         if f is True:
             return img
@@ -83,20 +92,20 @@ class TiffCapture(object):
             raise StopIteration()
     
     def grab(self):
-        """Move to the next stack image, return True for success"""
+        """Move to the next stack image, return True for success."""
         try:
-            self.tiff.seek(self._curr+1)
-            self._curr += 1
+            self.tiff.seek(self._curr+1) #updates tiff
+            self._curr += 1 #updates accounting
             return True
         except EOFError:
             return False
     
     def retrieve(self):
-        """Decode and return the grabbed video frame"""
+        """Decode and return the grabbed video frame."""
         return True, np.array(self.tiff) 
     
     def read(self):
-        """Grab, decode, and return the next video frame"""
+        """Grab, decode, and return the next video frame."""
         grabbed = self.grab()
         if grabbed is True:
             return True, self.retrieve()
@@ -104,7 +113,7 @@ class TiffCapture(object):
             return False, np.array([])
     
     def find_and_read(self, i):
-        """Find and return a specific frame number, i"""
+        """Find and return a specific frame number, i."""
         self.tiff.seek(i)
         try:
             img = np.array(self.tiff)
@@ -114,7 +123,7 @@ class TiffCapture(object):
         return img
     
     def seek(self, i):
-        """Set a given location in the tiff stack as our current """
+        """Set a given location in the tiff stack as our current."""
         self._curr = i
         return
 
