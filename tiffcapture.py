@@ -25,10 +25,10 @@ Created by Dave Williams on 2013-07-15
 """
 
 try:
-    import Image
+    from PIL import Image
     import numpy as np
 except ImportError, e:
-    raise Exception("You'll need both numpy and PIL installed (and to be able to import 'Image') for TiffCapture to work")
+    raise Exception("You'll need both numpy and PIL installed (and to be able to import 'Image' from it) for TiffCapture to work")
 
 
 def opentiff(filename):
