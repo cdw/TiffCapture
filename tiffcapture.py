@@ -37,16 +37,32 @@ def opentiff(filename):
 
 class TiffCapture(object):
     """Feed me a filename, I'll give you a tiff's capture object"""
-    def __init__(self, filename):
+    def __init__(self, filename=None):
         """Initialize and return the capture object"""
-        self.filename = filename
-        self.tiff = Image.open(filename)
-        self.length = self._count_frames()
-        self.shape = self.tiff.size
-        self._curr = 0
+        self._is_open = False #set true upon opening
+        self.open(filename) #open and set class variables
     
     def __iter__(self):
         return self
+
+    def open(self, filename):
+        """Open a multi-stack tiff for video capturing.
+        Open also sets class variables to allow dummy TiffCapture
+        objects to be initialized without all the attendant content.
+        A filename of None results in nothing being opened. 
+        Takes:
+            filename - the full path to the tiff stack
+        Gives:
+            isOpened - True if opened, False otherwise
+        """
+        if filename is not None:
+            self.filename = filename
+            self.tiff = Image.open(filename)
+            self._is_open = True
+            self.length = self._count_frames()
+            self.shape = self.tiff.size
+            self._curr = 0
+        return self.isOpened()
     
     def next(self):
         f, img = self.read()
