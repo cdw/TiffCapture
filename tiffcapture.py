@@ -115,3 +115,8 @@ class TiffCapture(object):
         """Set a given location in the tiff stack as our current """
         self._curr = i
         return
+
+    def isOpened(self):
+        """Returns true if a video capturing is initialized."""
+        return self._is_open
+
