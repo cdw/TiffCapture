@@ -31,7 +31,7 @@ except ImportError, e:
     raise Exception("You'll need both numpy and PIL installed (and to be able to import 'Image' from it) for TiffCapture to work")
 
 
-def opentiff(filename):
+def opentiff(filename=None):
     """Open a tiff with TiffCapture and return the capture object"""
     return TiffCapture(filename)
 

@@ -1,0 +1,3 @@
+v0.1.0, 2014.05.14 -- Initial release. 
+v0.1.1, 2014.05.14 -- Setup reconfiguration.
+v0.1.2, 2014.05.14 -- README edits.
