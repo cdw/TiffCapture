@@ -6,7 +6,7 @@ Provides a PIL based capture interface to multi-part tiffs, allowing them to be 
 Examples
 --------
 
-A minimal example looks like this:: python
+A minimal example looks like this::
 
     import tiffcapture as tc
     import matplotlib.pyplot at plt
@@ -16,7 +16,7 @@ A minimal example looks like this:: python
     tiff.release()
     
 
-More real world usage looks like this:: python
+More real world usage looks like this::
 
     import tiffcapture as tc
     import cv2
