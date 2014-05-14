@@ -1,11 +1,23 @@
-tiff-capture
-============
+tiffcapture
+===========
 
 Provides a PIL based capture interface to multi-part tiffs, allowing them to be used more easily with OpenCV. This allows you to use OpenCV's image and video processing capabilities with tiff stacks, a video form frequently encountered in scientific video as it is lossless and supports custom metadata. 
 
-Example usage:
+Examples
+--------
 
-```python
+A minimal example looks like this:: python
+
+    import tiffcapture as tc
+    import matplotlib.pyplot at plt
+    tiff = tc.opentiff(filename)
+    plt.imshow(tiff.read()[1][1])
+    plt.show()
+    tiff.release()
+    
+
+More real world usage looks like this:: python
+
     import tiffcapture as tc
     import cv2
     tiff = tc.opentiff(filename) #open img
@@ -18,5 +30,4 @@ Example usage:
         cv2.imshow('video', tempimg)
         cv2.waitKey(80)
     cv2.destroyWindow('video')
-```
 
