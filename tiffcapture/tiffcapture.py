@@ -108,7 +108,7 @@ class TiffCapture(object):
         """Grab, decode, and return the next video frame."""
         grabbed = self.grab()
         if grabbed is True:
-            return True, self.retrieve()
+            return self.retrieve()
         else:
             return False, np.array([])
     
