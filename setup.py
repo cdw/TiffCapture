@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
         name='TiffCapture',
-        version='0.1.3',
+        version='0.1.4',
         author='Dave Williams',
         author_email='cdave@uw.edu',
         packages=['tiffcapture'],
