@@ -24,7 +24,7 @@ More real world usage looks like this::
     tiff = tc.opentiff(filename) #open img
     _, first_img = tiff.retrieve() 
     cv2.namedWindow('video')
-    for f,img in tiff:
+    for img in tiff:
         tempimg = cv2.absdiff(first_img, img) # bkgnd sub
         _, tempimg = cv2.threshold(tempimg, 5, 255, 
             cv2.cv.CV_THRESH_BINARY) # convert to binary
