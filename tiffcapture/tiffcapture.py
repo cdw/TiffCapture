@@ -27,7 +27,7 @@ Created by Dave Williams on 2013-07-15
 try:
     from PIL import Image
     import numpy as np
-except ImportError, e:
+except ImportError:
     raise Exception("You'll need both numpy and PIL installed (and to be able to import 'Image' from it) for TiffCapture to work")
 
 
