@@ -10,7 +10,7 @@ Examples
 A minimal example looks like this::
 
     import tiffcapture as tc
-    import matplotlib.pyplot at plt
+    import matplotlib.pyplot as plt
     tiff = tc.opentiff(filename)
     plt.imshow(tiff.read()[1])
     plt.show()
