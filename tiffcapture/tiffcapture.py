@@ -91,6 +91,10 @@ class TiffCapture(object):
         else:
             raise StopIteration()
     
+    def __next__(self):
+        """Python 3 requires __next__ rather than next"""
+        return self.next()
+    
     def grab(self):
         """Move to the next stack image, return True for success."""
         try:

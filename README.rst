@@ -27,7 +27,7 @@ More real world usage looks like this::
     for img in tiff:
         tempimg = cv2.absdiff(first_img, img) # bkgnd sub
         _, tempimg = cv2.threshold(tempimg, 5, 255, 
-            cv2.cv.CV_THRESH_BINARY) # convert to binary
+            cv2.THRESH_BINARY) # convert to binary
         cv2.imshow('video', tempimg)
         cv2.waitKey(80)
     cv2.destroyWindow('video')
