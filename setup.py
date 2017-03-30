@@ -2,14 +2,15 @@ from distutils.core import setup
 
 setup(
         name='TiffCapture',
-        version='0.1.5',
+        version='0.1.6',
         author='Dave Williams',
         author_email='cdave@uw.edu',
         packages=['tiffcapture'],
         url='https://github.com/cdw/TiffCapture',
+        download_url = 'https://github.com/cdw/TiffCapture/archive/0.1.6.tar.gz',
         keywords = ["tiff", "PIL", "OpenCV"],
         classifiers = [
-             "Programming Language :: Python",
+            "Programming Language :: Python",
             "Development Status :: 4 - Beta",
             "License :: OSI Approved :: MIT License",
             "Intended Audience :: Science/Research",

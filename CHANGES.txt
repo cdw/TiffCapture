@@ -4,3 +4,4 @@ v0.1.2, 2014.05.14 -- README edits.
 v0.1.3, 2014.05.15 -- Fixed extra return value in read().
 v0.1.4, 2016.06.28 -- Documentation typos.
 v0.1.5, 2017.02.27 -- 2->3 subpackage import error. 
+v0.1.6, 2017.03.30 -- Move code hosting to GitHub.
