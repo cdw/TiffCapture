@@ -58,7 +58,7 @@ class TiffCapture(object):
         try:
             self.tiff.seek(10**1000) #gonna assume that's long enough
         except EOFError:
-            length = self.tiff.tell()
+            length = self.tiff.tell() + 1
             self.tiff.seek(0)
             return length
     
@@ -78,7 +78,7 @@ class TiffCapture(object):
             self._is_open = True
             self.length = self._count_frames()
             self.shape = self.tiff.size
-            self._curr = 0
+            self._curr = -1
         return self.isOpened()
     
     def next(self):
@@ -128,7 +128,7 @@ class TiffCapture(object):
     
     def seek(self, i):
         """Set a given location in the tiff stack as our current."""
-        self._curr = i
+        self._curr = i - 1
         return
     
     def release(self):
